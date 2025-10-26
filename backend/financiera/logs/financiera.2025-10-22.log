@@ -1,0 +1,256 @@
+2025-10-20 00:05:16 [http-nio-8090-exec-9] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 60967428
+2025-10-20 00:05:16 [http-nio-8090-exec-9] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Orlando Quispe
+2025-10-20 00:05:17 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Se obtuvieron 0 aportes para usuario ID 6
+2025-10-20 00:05:17 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 6
+2025-10-20 00:05:17 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Se obtuvieron 0 saldos para usuario ID 6
+2025-10-20 00:05:17 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 6
+2025-10-20 00:05:17 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-4] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-4] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-8] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 6
+2025-10-20 00:05:17 [http-nio-8090-exec-10] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 6
+2025-10-20 00:08:24 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 12345678
+2025-10-20 00:08:24 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Carlos Mendoza
+2025-10-20 00:12:41 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 60967428
+2025-10-20 00:12:41 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Orlando Quispe
+2025-10-20 00:12:47 [http-nio-8090-exec-10] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 12345678
+2025-10-20 00:12:47 [http-nio-8090-exec-10] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Carlos Mendoza
+2025-10-20 00:16:14 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 12345678
+2025-10-20 00:16:14 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Carlos Mendoza
+2025-10-20 00:16:25 [http-nio-8090-exec-2] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 60967428
+2025-10-20 00:16:25 [http-nio-8090-exec-2] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Orlando Quispe
+2025-10-20 00:16:27 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 6
+2025-10-20 00:16:27 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Se obtuvieron 0 saldos para usuario ID 6
+2025-10-20 00:16:27 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Se obtuvieron 0 aportes para usuario ID 6
+2025-10-20 00:16:27 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 6
+2025-10-20 00:16:27 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Se obtuvieron 0 saldos para usuario ID 6
+2025-10-20 00:16:27 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 6
+2025-10-20 00:16:27 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Se obtuvieron 0 aportes para usuario ID 6
+2025-10-20 00:16:27 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 6
+2025-10-20 00:16:27 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 6
+2025-10-20 00:16:28 [http-nio-8090-exec-8] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 6
+2025-10-20 00:16:28 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 6
+2025-10-20 00:16:28 [http-nio-8090-exec-10] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 6
+2025-10-20 00:16:28 [http-nio-8090-exec-4] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 6
+2025-10-20 00:16:28 [http-nio-8090-exec-4] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 6
+2025-10-20 00:16:29 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 6
+2025-10-20 00:16:29 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 6
+2025-10-20 00:16:29 [http-nio-8090-exec-9] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 6
+2025-10-20 00:16:29 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 6
+2025-10-20 00:16:29 [http-nio-8090-exec-1] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 6
+2025-10-20 00:16:35 [http-nio-8090-exec-4] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 12345678
+2025-10-20 00:16:35 [http-nio-8090-exec-4] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Carlos Mendoza
+2025-10-20 00:19:45 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:19:45 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:19:45 [http-nio-8090-exec-2] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:19:45 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:19:45 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:19:45 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:19:45 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:19:45 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:19:45 [http-nio-8090-exec-2] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:19:45 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:19:46 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:19:46 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:19:46 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:19:46 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:19:46 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-3] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-6] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:19:46 [http-nio-8090-exec-8] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-1] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-1] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-3] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:19:50 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:19:51 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:19:51 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:19:51 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:19:51 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:19:51 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:19:51 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:19:51 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:19:55 [http-nio-8090-exec-4] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:19:55 [http-nio-8090-exec-8] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:19:55 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:19:55 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:19:55 [http-nio-8090-exec-9] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:15 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Intento de login con DNI: 12345678
+2025-10-20 00:21:15 [http-nio-8090-exec-7] INFO  c.a.f.controller.UsuarioController - Login exitoso para usuario: Carlos Mendoza
+2025-10-20 00:21:40 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-1] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-1] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-2] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:21:40 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:21:40 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:21:40 [http-nio-8090-exec-2] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:21:40 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:21:40 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:21:41 [http-nio-8090-exec-1] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:41 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:41 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:41 [http-nio-8090-exec-3] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:41 [http-nio-8090-exec-3] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-7] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-10] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:21:42 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:21:42 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:21:42 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:21:42 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-5] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-1] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-1] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:21:43 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:21:43 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:21:44 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-6] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:21:44 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:21:44 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:21:44 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:21:44 [http-nio-8090-exec-4] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-8] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-10] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:44 [http-nio-8090-exec-10] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-3] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-7] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:21:46 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:21:46 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:21:46 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:21:46 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:21:47 [http-nio-8090-exec-4] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:21:47 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:21:47 [http-nio-8090-exec-4] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:21:47 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:21:47 [http-nio-8090-exec-3] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:25:48 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:25:48 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:25:48 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:25:48 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-8] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-2] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:25:48 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:25:51 [http-nio-8090-exec-8] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:25:51 [http-nio-8090-exec-9] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
+2025-10-20 00:25:51 [http-nio-8090-exec-5] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:25:51 [http-nio-8090-exec-4] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:25:51 [http-nio-8090-exec-4] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:25:52 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:25:52 [http-nio-8090-exec-2] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:25:52 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:25:52 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:25:52 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:25:52 [http-nio-8090-exec-3] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:25:52 [http-nio-8090-exec-2] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:25:52 [http-nio-8090-exec-7] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:25:52 [http-nio-8090-exec-10] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:25:52 [http-nio-8090-exec-6] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:25:54 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Solicitud de comparativo financiero para usuario ID: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Solicitud de saldos para usuario ID: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Solicitud de estadísticas para usuario ID: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Solicitud de resumen financiero para usuario ID: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Solicitud de aportes para usuario ID: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-4] INFO  c.a.f.c.FinancieroController - Se obtuvieron 2 saldos para usuario ID 1
+2025-10-20 00:25:54 [http-nio-8090-exec-9] INFO  c.a.f.c.FinancieroController - Estadísticas generadas correctamente para usuario ID 1
+2025-10-20 00:25:54 [http-nio-8090-exec-8] INFO  c.a.f.c.FinancieroController - Comparativo generado correctamente para usuario ID 1
+2025-10-20 00:25:54 [http-nio-8090-exec-1] INFO  c.a.f.c.FinancieroController - Resumen financiero generado correctamente para usuario ID: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-5] INFO  c.a.f.c.FinancieroController - Se obtuvieron 26 aportes para usuario ID 1
+2025-10-20 00:25:54 [http-nio-8090-exec-2] INFO  c.a.f.controller.PensionesController - Solicitando resumen de pensiones para usuario: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-6] INFO  c.a.f.controller.PensionesController - Solicitando estado de pensiones para usuario: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-2] INFO  c.a.f.service.PensionesServiceImpl - Generando resumen de pensiones para usuario: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-7] INFO  c.a.f.controller.PensionesController - Solicitando aportes para usuario: 1
+2025-10-20 00:25:54 [http-nio-8090-exec-3] INFO  c.a.f.controller.PensionesController - Solicitando saldos para usuario: 1
