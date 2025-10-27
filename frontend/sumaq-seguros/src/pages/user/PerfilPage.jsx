@@ -6,7 +6,7 @@ import UsuarioService from '../../service/user/UsuarioService';
 import ImageUploader from '../../components/ImageUploader';
 
 export default function PerfilPage() {
-    const { user, login } = useAuth();
+    const { user, updateUser } = useAuth();
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
@@ -149,7 +149,7 @@ export default function PerfilPage() {
             
             // Actualizar el contexto de usuario con los nuevos datos
             const usuarioActualizado = response.data.data;
-            login(usuarioActualizado);
+            updateUser(usuarioActualizado);
             
             // Recargar datos para obtener la información completa
             setTimeout(() => {

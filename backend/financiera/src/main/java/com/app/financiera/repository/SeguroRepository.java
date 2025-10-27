@@ -24,7 +24,7 @@ public interface SeguroRepository extends JpaRepository<Seguro, Integer> {
     List<Seguro> findByCompania(int idCompania);
 
     // Obtener seguros de un usuario
-    @Query("SELECT s FROM Seguro s WHERE s.usuario.idUsuario = ?1 AND s.estado = 'Activo'")
+    @Query("SELECT s FROM Seguro s WHERE s.usuario.idUsuario = ?1 AND (s.estado = 'Activo' OR s.estado = 'Vigente')")
     List<Seguro> findByUsuario(int idUsuario);
 
     // Buscar seguros por rango de prima mensual

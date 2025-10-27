@@ -1,0 +1,1049 @@
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+ALTER SCHEMA public OWNER TO avnadmin;
+
+COMMENT ON SCHEMA public IS '';
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+CREATE TABLE public.administrador (
+    id_admin integer NOT NULL,
+    id_usuario integer NOT NULL,
+    rol_detalle character varying(50),
+    permisos_sistema jsonb,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.administrador OWNER TO avnadmin;
+
+CREATE SEQUENCE public.administrador_id_admin_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.administrador_id_admin_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.administrador_id_admin_seq OWNED BY public.administrador.id_admin;
+
+CREATE TABLE public.afp (
+    id_afp integer NOT NULL,
+    id_institucion integer NOT NULL,
+    nombre character varying(150) NOT NULL,
+    codigo_sbs character varying(20),
+    comision_flujo numeric(5,2),
+    comision_saldo numeric(5,2),
+    comision_mixta numeric(5,2),
+    rentabilidad_promedio numeric(5,2),
+    fondos_disponibles jsonb,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.afp OWNER TO avnadmin;
+
+CREATE SEQUENCE public.afp_id_afp_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.afp_id_afp_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.afp_id_afp_seq OWNED BY public.afp.id_afp;
+
+CREATE TABLE public.aporte_pension (
+    id_aporte integer NOT NULL,
+    id_usuario integer NOT NULL,
+    id_institucion integer NOT NULL,
+    id_tipo_fondo integer NOT NULL,
+    cuspp character varying(50),
+    periodo character varying(10),
+    monto_aporte numeric(12,2),
+    aporte_trabajador numeric(12,2),
+    aporte_empleador numeric(12,2),
+    comision_cobrada numeric(12,2),
+    seguro_invalidez numeric(12,2),
+    fecha_aporte timestamp without time zone,
+    empleador character varying(150),
+    ruc_empleador character varying(20),
+    salario_declarado numeric(10,2),
+    dias_trabajados integer,
+    observaciones text,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.aporte_pension OWNER TO avnadmin;
+
+CREATE SEQUENCE public.aporte_pension_id_aporte_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.aporte_pension_id_aporte_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.aporte_pension_id_aporte_seq OWNED BY public.aporte_pension.id_aporte;
+
+CREATE TABLE public.asesor (
+    id_asesor integer NOT NULL,
+    id_usuario integer NOT NULL,
+    especialidad character varying(50),
+    codigo_asesor character varying(50) NOT NULL,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.asesor OWNER TO avnadmin;
+
+CREATE SEQUENCE public.asesor_id_asesor_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.asesor_id_asesor_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.asesor_id_asesor_seq OWNED BY public.asesor.id_asesor;
+
+CREATE TABLE public.asesoramiento_financiero (
+    id_asesoramiento integer NOT NULL,
+    id_usuario integer NOT NULL,
+    id_asesor integer NOT NULL,
+    id_aporte integer,
+    tipo_asesoramiento character varying(50),
+    canal_atencion character varying(50),
+    fecha_asesoramiento timestamp without time zone,
+    seguimiento_requerido boolean,
+    fecha_seguimiento date,
+    satisfaccion_cliente integer,
+    comentarios text,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.asesoramiento_financiero OWNER TO avnadmin;
+
+CREATE SEQUENCE public.asesoramiento_financiero_id_asesoramiento_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.asesoramiento_financiero_id_asesoramiento_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.asesoramiento_financiero_id_asesoramiento_seq OWNED BY public.asesoramiento_financiero.id_asesoramiento;
+
+CREATE TABLE public.autenticacion (
+    id_autenticacion integer NOT NULL,
+    id_usuario integer NOT NULL,
+    clave_sql character varying(500),
+    estado_sesion character varying(20) NOT NULL,
+    fecha_inicio timestamp without time zone,
+    fecha_expiracion timestamp without time zone,
+    ip_acceso character varying(50)
+);
+
+ALTER TABLE public.autenticacion OWNER TO avnadmin;
+
+CREATE SEQUENCE public.autenticacion_id_autenticacion_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.autenticacion_id_autenticacion_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.autenticacion_id_autenticacion_seq OWNED BY public.autenticacion.id_autenticacion;
+
+CREATE TABLE public.beneficiario_seguro (
+    id_beneficiario integer NOT NULL,
+    id_seguro integer NOT NULL,
+    nombre_completo character varying(200) NOT NULL,
+    parentesco character varying(50) NOT NULL,
+    porcentaje numeric(5,2) NOT NULL,
+    dni character varying(20),
+    fecha_nacimiento date,
+    telefono character varying(20),
+    estado character varying(20) DEFAULT 'Activo'::character varying NOT NULL,
+    CONSTRAINT beneficiario_seguro_porcentaje_check CHECK (((porcentaje > (0)::numeric) AND (porcentaje <= (100)::numeric)))
+);
+
+ALTER TABLE public.beneficiario_seguro OWNER TO avnadmin;
+
+CREATE SEQUENCE public.beneficiario_seguro_id_beneficiario_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.beneficiario_seguro_id_beneficiario_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.beneficiario_seguro_id_beneficiario_seq OWNED BY public.beneficiario_seguro.id_beneficiario;
+
+CREATE TABLE public.chat_mensaje (
+    id_mensaje integer NOT NULL,
+    id_usuario integer NOT NULL,
+    mensaje_usuario text NOT NULL,
+    respuesta_asistente text,
+    fecha_mensaje timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    tipo_consulta character varying(50),
+    contexto_conversacion text,
+    accion_generada character varying(50),
+    satisfaccion integer,
+    session_id character varying(100),
+    CONSTRAINT chat_mensaje_satisfaccion_check CHECK (((satisfaccion >= 1) AND (satisfaccion <= 5)))
+);
+
+ALTER TABLE public.chat_mensaje OWNER TO avnadmin;
+
+CREATE SEQUENCE public.chat_mensaje_id_mensaje_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.chat_mensaje_id_mensaje_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.chat_mensaje_id_mensaje_seq OWNED BY public.chat_mensaje.id_mensaje;
+
+CREATE TABLE public.compania_seguro (
+    id_compania integer NOT NULL,
+    id_institucion integer NOT NULL,
+    nombre character varying(150) NOT NULL,
+    codigo_sbs character varying(20),
+    tipos_seguro_ofrecidos jsonb,
+    calificacion_riesgo character varying(50),
+    telefono character varying(20),
+    email character varying(100),
+    sitio_web character varying(200),
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.compania_seguro OWNER TO avnadmin;
+
+CREATE SEQUENCE public.compania_seguro_id_compania_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.compania_seguro_id_compania_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.compania_seguro_id_compania_seq OWNED BY public.compania_seguro.id_compania;
+
+CREATE TABLE public.consulta_aportes (
+    id_consulta integer NOT NULL,
+    id_usuario integer NOT NULL,
+    tipo_consulta character varying(50),
+    parametros jsonb,
+    fecha_consulta timestamp without time zone,
+    resultado jsonb,
+    exitoso boolean,
+    mensaje_error text
+);
+
+ALTER TABLE public.consulta_aportes OWNER TO avnadmin;
+
+CREATE SEQUENCE public.consulta_aportes_id_consulta_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.consulta_aportes_id_consulta_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.consulta_aportes_id_consulta_seq OWNED BY public.consulta_aportes.id_consulta;
+
+CREATE TABLE public.historial_consultas (
+    id_historial integer NOT NULL,
+    id_usuario integer NOT NULL,
+    fecha timestamp without time zone NOT NULL,
+    detalle_consulta text,
+    tipo_consulta character varying(50),
+    resultado character varying(20)
+);
+
+ALTER TABLE public.historial_consultas OWNER TO avnadmin;
+
+CREATE SEQUENCE public.historial_consultas_id_historial_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.historial_consultas_id_historial_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.historial_consultas_id_historial_seq OWNED BY public.historial_consultas.id_historial;
+
+CREATE TABLE public.historial_rentabilidad (
+    id_rentabilidad integer NOT NULL,
+    id_afp integer NOT NULL,
+    id_tipo_fondo integer NOT NULL,
+    periodo character varying(10),
+    rentabilidad_nominal numeric(10,2),
+    rentabilidad_real numeric(10,2),
+    patrimonio numeric(15,2),
+    numero_afiliados integer,
+    fecha_registro timestamp without time zone
+);
+
+ALTER TABLE public.historial_rentabilidad OWNER TO avnadmin;
+
+CREATE SEQUENCE public.historial_rentabilidad_id_rentabilidad_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.historial_rentabilidad_id_rentabilidad_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.historial_rentabilidad_id_rentabilidad_seq OWNED BY public.historial_rentabilidad.id_rentabilidad;
+
+CREATE TABLE public.institucion (
+    id_institucion integer NOT NULL,
+    nombre character varying(150) NOT NULL,
+    tipo character varying(50),
+    ruc character varying(20),
+    direccion character varying(200),
+    telefono character varying(20),
+    email character varying(100),
+    sitio_web character varying(200),
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.institucion OWNER TO avnadmin;
+
+CREATE SEQUENCE public.institucion_id_institucion_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.institucion_id_institucion_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.institucion_id_institucion_seq OWNED BY public.institucion.id_institucion;
+
+CREATE TABLE public.notificacion (
+    id_notificacion integer NOT NULL,
+    id_usuario integer NOT NULL,
+    tipo_notificacion character varying(50),
+    mensaje text,
+    fecha_envio timestamp without time zone,
+    fecha_lectura timestamp without time zone,
+    canal character varying(30),
+    prioridad character varying(20),
+    estado character varying(20)
+);
+
+ALTER TABLE public.notificacion OWNER TO avnadmin;
+
+CREATE SEQUENCE public.notificacion_id_notificacion_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.notificacion_id_notificacion_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.notificacion_id_notificacion_seq OWNED BY public.notificacion.id_notificacion;
+
+CREATE TABLE public.pago_seguro (
+    id_pago integer NOT NULL,
+    id_seguro integer NOT NULL,
+    numero_cuota integer,
+    monto_pagado numeric(10,2),
+    fecha_pago timestamp without time zone,
+    metodo_pago character varying(50),
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.pago_seguro OWNER TO avnadmin;
+
+CREATE SEQUENCE public.pago_seguro_id_pago_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.pago_seguro_id_pago_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.pago_seguro_id_pago_seq OWNED BY public.pago_seguro.id_pago;
+
+CREATE TABLE public.rol_usuario (
+    id_rol integer NOT NULL,
+    nombre_rol character varying(50) NOT NULL,
+    descripcion text,
+    permisos jsonb,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.rol_usuario OWNER TO avnadmin;
+
+CREATE SEQUENCE public.rol_usuario_id_rol_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.rol_usuario_id_rol_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.rol_usuario_id_rol_seq OWNED BY public.rol_usuario.id_rol;
+
+CREATE TABLE public.saldo_pension (
+    id_saldo integer NOT NULL,
+    id_usuario integer NOT NULL,
+    id_afp integer,
+    id_tipo_fondo integer NOT NULL,
+    saldo_total numeric(15,2),
+    saldo_disponible numeric(15,2),
+    saldo_cic numeric(15,2),
+    saldo_cv numeric(15,2),
+    rentabilidad_acumulada numeric(10,2),
+    fecha_corte date,
+    fecha_actualizacion timestamp without time zone,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.saldo_pension OWNER TO avnadmin;
+
+CREATE SEQUENCE public.saldo_pension_id_saldo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.saldo_pension_id_saldo_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.saldo_pension_id_saldo_seq OWNED BY public.saldo_pension.id_saldo;
+
+CREATE TABLE public.seguro (
+    id_seguro integer NOT NULL,
+    id_usuario integer NOT NULL,
+    id_tipo_seguro integer NOT NULL,
+    id_compania integer NOT NULL,
+    numero_poliza character varying(50) NOT NULL,
+    numero_contrato character varying(50),
+    fecha_inicio date,
+    fecha_vencimiento date,
+    monto_asegurado numeric(15,2),
+    prima_mensual numeric(10,2),
+    prima_anual numeric(10,2),
+    deducible numeric(10,2),
+    beneficiarios jsonb,
+    coberturas jsonb,
+    exclusiones jsonb,
+    forma_pago character varying(30),
+    metodo_pago character varying(50),
+    fecha_registro timestamp without time zone,
+    estado character varying(20) NOT NULL,
+    dias_gracia integer DEFAULT 15,
+    alerta_vencimiento boolean DEFAULT true
+);
+
+ALTER TABLE public.seguro OWNER TO avnadmin;
+
+CREATE SEQUENCE public.seguro_id_seguro_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.seguro_id_seguro_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.seguro_id_seguro_seq OWNED BY public.seguro.id_seguro;
+
+CREATE TABLE public.tipo_fondo (
+    id_tipo_fondo integer NOT NULL,
+    nombre_tipo character varying(100) NOT NULL,
+    descripcion text,
+    categoria character varying(50),
+    rentabilidad_esperada numeric(5,2),
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.tipo_fondo OWNER TO avnadmin;
+
+CREATE SEQUENCE public.tipo_fondo_id_tipo_fondo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.tipo_fondo_id_tipo_fondo_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.tipo_fondo_id_tipo_fondo_seq OWNED BY public.tipo_fondo.id_tipo_fondo;
+
+CREATE TABLE public.tipo_seguro (
+    id_tipo_seguro integer NOT NULL,
+    nombre character varying(100) NOT NULL,
+    descripcion text,
+    categoria character varying(50),
+    cobertura_principal text,
+    estado character varying(20) NOT NULL
+);
+
+ALTER TABLE public.tipo_seguro OWNER TO avnadmin;
+
+CREATE SEQUENCE public.tipo_seguro_id_tipo_seguro_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.tipo_seguro_id_tipo_seguro_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.tipo_seguro_id_tipo_seguro_seq OWNED BY public.tipo_seguro.id_tipo_seguro;
+
+CREATE TABLE public.tramite_seguro (
+    id_tramite integer NOT NULL,
+    id_usuario integer NOT NULL,
+    id_seguro integer,
+    tipo_tramite character varying(50) NOT NULL,
+    descripcion text NOT NULL,
+    fecha_solicitud timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    fecha_resolucion timestamp without time zone,
+    estado character varying(20) DEFAULT 'Pendiente'::character varying NOT NULL,
+    respuesta text,
+    documentos_adjuntos jsonb,
+    prioridad character varying(20) DEFAULT 'Media'::character varying,
+    canal_atencion character varying(50)
+);
+
+ALTER TABLE public.tramite_seguro OWNER TO avnadmin;
+
+CREATE SEQUENCE public.tramite_seguro_id_tramite_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.tramite_seguro_id_tramite_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.tramite_seguro_id_tramite_seq OWNED BY public.tramite_seguro.id_tramite;
+
+CREATE TABLE public.usuario (
+    id_usuario integer NOT NULL,
+    id_rol integer NOT NULL,
+    nombre character varying(100) NOT NULL,
+    apellido character varying(100) NOT NULL,
+    dni character varying(20) NOT NULL,
+    fecha_nacimiento date,
+    genero character varying(5),
+    estado_civil character varying(20),
+    correo character varying(100) NOT NULL,
+    telefono character varying(20),
+    direccion character varying(200),
+    distrito character varying(100),
+    provincia character varying(100),
+    departamento character varying(100),
+    contrasena character varying(255),
+    clave_sol character varying(100),
+    centro_trabajo character varying(150),
+    salario_actual numeric(10,2),
+    fecha_ingreso_trabajo date,
+    tipo_contrato character varying(30),
+    cuspp character varying(50),
+    id_afp integer,
+    tipo_regimen character varying(20),
+    fecha_afiliacion date,
+    notificaciones_email boolean,
+    notificaciones_sms boolean,
+    estado character varying(20) NOT NULL,
+    ultimo_acceso timestamp without time zone,
+    foto_perfil text
+);
+
+ALTER TABLE public.usuario OWNER TO avnadmin;
+
+CREATE SEQUENCE public.usuario_id_usuario_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.usuario_id_usuario_seq OWNER TO avnadmin;
+
+ALTER SEQUENCE public.usuario_id_usuario_seq OWNED BY public.usuario.id_usuario;
+
+ALTER TABLE ONLY public.administrador ALTER COLUMN id_admin SET DEFAULT nextval('public.administrador_id_admin_seq'::regclass);
+
+ALTER TABLE ONLY public.afp ALTER COLUMN id_afp SET DEFAULT nextval('public.afp_id_afp_seq'::regclass);
+
+ALTER TABLE ONLY public.aporte_pension ALTER COLUMN id_aporte SET DEFAULT nextval('public.aporte_pension_id_aporte_seq'::regclass);
+
+ALTER TABLE ONLY public.asesor ALTER COLUMN id_asesor SET DEFAULT nextval('public.asesor_id_asesor_seq'::regclass);
+
+ALTER TABLE ONLY public.asesoramiento_financiero ALTER COLUMN id_asesoramiento SET DEFAULT nextval('public.asesoramiento_financiero_id_asesoramiento_seq'::regclass);
+
+ALTER TABLE ONLY public.autenticacion ALTER COLUMN id_autenticacion SET DEFAULT nextval('public.autenticacion_id_autenticacion_seq'::regclass);
+
+ALTER TABLE ONLY public.beneficiario_seguro ALTER COLUMN id_beneficiario SET DEFAULT nextval('public.beneficiario_seguro_id_beneficiario_seq'::regclass);
+
+ALTER TABLE ONLY public.chat_mensaje ALTER COLUMN id_mensaje SET DEFAULT nextval('public.chat_mensaje_id_mensaje_seq'::regclass);
+
+ALTER TABLE ONLY public.compania_seguro ALTER COLUMN id_compania SET DEFAULT nextval('public.compania_seguro_id_compania_seq'::regclass);
+
+ALTER TABLE ONLY public.consulta_aportes ALTER COLUMN id_consulta SET DEFAULT nextval('public.consulta_aportes_id_consulta_seq'::regclass);
+
+ALTER TABLE ONLY public.historial_consultas ALTER COLUMN id_historial SET DEFAULT nextval('public.historial_consultas_id_historial_seq'::regclass);
+
+ALTER TABLE ONLY public.historial_rentabilidad ALTER COLUMN id_rentabilidad SET DEFAULT nextval('public.historial_rentabilidad_id_rentabilidad_seq'::regclass);
+
+ALTER TABLE ONLY public.institucion ALTER COLUMN id_institucion SET DEFAULT nextval('public.institucion_id_institucion_seq'::regclass);
+
+ALTER TABLE ONLY public.notificacion ALTER COLUMN id_notificacion SET DEFAULT nextval('public.notificacion_id_notificacion_seq'::regclass);
+
+ALTER TABLE ONLY public.pago_seguro ALTER COLUMN id_pago SET DEFAULT nextval('public.pago_seguro_id_pago_seq'::regclass);
+
+ALTER TABLE ONLY public.rol_usuario ALTER COLUMN id_rol SET DEFAULT nextval('public.rol_usuario_id_rol_seq'::regclass);
+
+ALTER TABLE ONLY public.saldo_pension ALTER COLUMN id_saldo SET DEFAULT nextval('public.saldo_pension_id_saldo_seq'::regclass);
+
+ALTER TABLE ONLY public.seguro ALTER COLUMN id_seguro SET DEFAULT nextval('public.seguro_id_seguro_seq'::regclass);
+
+ALTER TABLE ONLY public.tipo_fondo ALTER COLUMN id_tipo_fondo SET DEFAULT nextval('public.tipo_fondo_id_tipo_fondo_seq'::regclass);
+
+ALTER TABLE ONLY public.tipo_seguro ALTER COLUMN id_tipo_seguro SET DEFAULT nextval('public.tipo_seguro_id_tipo_seguro_seq'::regclass);
+
+ALTER TABLE ONLY public.tramite_seguro ALTER COLUMN id_tramite SET DEFAULT nextval('public.tramite_seguro_id_tramite_seq'::regclass);
+
+ALTER TABLE ONLY public.usuario ALTER COLUMN id_usuario SET DEFAULT nextval('public.usuario_id_usuario_seq'::regclass);
+
+COPY public.administrador (id_admin, id_usuario, rol_detalle, permisos_sistema, estado) FROM stdin;
+1	1	Super Admin	{"respaldos": true, "gestion_usuarios": true, "reportes_globales": true, "configuracion_sistema": true}	Activo
+\.
+
+COPY public.afp (id_afp, id_institucion, nombre, codigo_sbs, comision_flujo, comision_saldo, comision_mixta, rentabilidad_promedio, fondos_disponibles, estado) FROM stdin;
+1	2	AFP Integra	SBS001	0.82	1.20	\N	7.50	["1", "2", "3"]	Activo
+3	4	AFP Habitat	SBS003	1.25	1.20	\N	6.80	["1", "2", "3"]	Activo
+4	5	AFP Profuturo	SBS004	1.47	1.20	\N	6.50	["1", "2", "3"]	Activo
+2	3	AFP Prima	SBS002	0.99	1.20	\N	7.20	["1", "2", "3"]	Activo
+\.
+
+COPY public.aporte_pension (id_aporte, id_usuario, id_institucion, id_tipo_fondo, cuspp, periodo, monto_aporte, aporte_trabajador, aporte_empleador, comision_cobrada, seguro_invalidez, fecha_aporte, empleador, ruc_empleador, salario_declarado, dias_trabajados, observaciones, estado) FROM stdin;
+16	6	2	2	\N	2025-01	1111.00	1111.00	0.00	50.00	33.00	2025-01-16 00:00:00	RED GAS SAC	988654637	3000.00	30	Prueba onp	Registrado
+2	1	1	1	\N	2024-12	850.00	425.00	425.00	0.00	0.00	2024-12-31 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP diciembre	Procesado
+3	1	1	1	\N	2024-11	850.00	425.00	425.00	0.00	0.00	2024-11-30 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP noviembre	Procesado
+4	1	1	1	\N	2024-10	850.00	425.00	425.00	0.00	0.00	2024-10-31 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP octubre	Procesado
+5	1	1	1	\N	2024-09	850.00	425.00	425.00	0.00	0.00	2024-09-30 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP septiembre	Procesado
+6	1	1	1	\N	2024-08	850.00	425.00	425.00	0.00	0.00	2024-08-31 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP agosto	Procesado
+7	1	1	1	\N	2024-07	850.00	425.00	425.00	0.00	0.00	2024-07-31 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP julio	Procesado
+8	1	1	1	\N	2024-06	850.00	425.00	425.00	0.00	0.00	2024-06-30 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP junio	Procesado
+9	1	1	1	\N	2024-05	850.00	425.00	425.00	0.00	0.00	2024-05-31 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP mayo	Procesado
+10	1	1	1	\N	2024-04	850.00	425.00	425.00	0.00	0.00	2024-04-30 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP abril	Procesado
+11	1	1	1	\N	2024-03	850.00	425.00	425.00	0.00	0.00	2024-03-31 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP marzo	Procesado
+12	1	1	1	\N	2024-02	850.00	425.00	425.00	0.00	0.00	2024-02-29 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	29	Aporte ONP febrero	Procesado
+1	1	2	2	\N	2025-01	858.00	425.00	425.00	0.00	0.00	2025-01-31 00:00:00	Empresa ACME S.A.C.	20123456001	2500.00	30	Aporte ONP enero	Registrado
+13	1	2	2	\N	2024-12	300.00	300.00	0.00	55.00	66.00	2025-09-30 00:00:00	Tecnolog├¡a Andina S.A.C.	20123456789	3000.00	30	Rrueba	Registrado
+17	6	2	2	\N	2025-01	1111.00	1111.00	0.00	50.00	33.00	2025-01-16 00:00:00	RED GAS SAC	988654637	3000.00	30	Prueba onp	Registrado
+15	6	2	2	\N	2025-09	500.00	500.00	0.00	44.00	50.00	2025-10-10 00:00:00	RED GAS 	876785919	4000.00	30	Prueba	Registrado
+18	6	1	2	\N	2025-09	1000.00	1000.00	0.00	45.00	78.00	2025-10-26 00:00:00	UTP SAC	455566778	30000.00	30	Ninguna	Registrado
+19	6	2	2	\N	2025-01	3000.00	3000.00	0.00	50.00	56.00	2025-10-21 00:00:00	OLVA CURRIER	66553346	6000.00	30	Ninguna	Registrado
+\.
+
+COPY public.asesor (id_asesor, id_usuario, especialidad, codigo_asesor, estado) FROM stdin;
+\.
+
+COPY public.asesoramiento_financiero (id_asesoramiento, id_usuario, id_asesor, id_aporte, tipo_asesoramiento, canal_atencion, fecha_asesoramiento, seguimiento_requerido, fecha_seguimiento, satisfaccion_cliente, comentarios, estado) FROM stdin;
+\.
+
+COPY public.autenticacion (id_autenticacion, id_usuario, clave_sql, estado_sesion, fecha_inicio, fecha_expiracion, ip_acceso) FROM stdin;
+\.
+
+COPY public.beneficiario_seguro (id_beneficiario, id_seguro, nombre_completo, parentesco, porcentaje, dni, fecha_nacimiento, telefono, estado) FROM stdin;
+1	8	Mar├¡a Garc├¡a L├│pez	C├│nyuge	100.00	87654321	1988-05-20	965432187	Activo
+2	9	Mar├¡a Garc├¡a L├│pez	C├│nyuge	60.00	87654321	1988-05-20	965432187	Activo
+3	9	Juan Carlos Mendoza Garc├¡a	Hijo	40.00	\N	2015-03-10	\N	Activo
+4	14	Mar├¡a Garc├¡a L├│pez	C├│nyuge	100.00	87654321	1988-05-20	965432187	Activo
+\.
+
+COPY public.chat_mensaje (id_mensaje, id_usuario, mensaje_usuario, respuesta_asistente, fecha_mensaje, tipo_consulta, contexto_conversacion, accion_generada, satisfaccion, session_id) FROM stdin;
+\.
+
+COPY public.compania_seguro (id_compania, id_institucion, nombre, codigo_sbs, tipos_seguro_ofrecidos, calificacion_riesgo, telefono, email, sitio_web, estado) FROM stdin;
+1	1	Rimac Seguros	CS001	["Vehicular", "Hogar", "Vida"]	AAA	01-411-1111	contacto@rimac.com	https://www.rimac.com	Activo
+2	1	Pac├¡fico Seguros	CS002	["Vehicular", "Hogar", "Salud"]	AA+	01-513-5000	atencion@pacifico.com.pe	https://www.pacifico.com.pe	Activo
+3	1	Mapfre Per├║	CS003	["Vehicular", "Salud", "Vida"]	AA	01-617-0202	contacto@mapfre.com.pe	https://www.mapfre.com.pe	Activo
+\.
+
+COPY public.consulta_aportes (id_consulta, id_usuario, tipo_consulta, parametros, fecha_consulta, resultado, exitoso, mensaje_error) FROM stdin;
+\.
+
+COPY public.historial_consultas (id_historial, id_usuario, fecha, detalle_consulta, tipo_consulta, resultado) FROM stdin;
+\.
+
+COPY public.historial_rentabilidad (id_rentabilidad, id_afp, id_tipo_fondo, periodo, rentabilidad_nominal, rentabilidad_real, patrimonio, numero_afiliados, fecha_registro) FROM stdin;
+\.
+
+COPY public.institucion (id_institucion, nombre, tipo, ruc, direccion, telefono, email, sitio_web, estado) FROM stdin;
+1	Oficina de Normalizaci├│n Previsional - ONP	Pensiones	20131370659	Av. Arenales 1202, Lima	01-5905555	consultas@onp.gob.pe	https://www.onp.gob.pe	Activo
+2	AFP Integra	Financiera	20100256130	Av. Javier Prado Este 5266, Lima	01-6170000	atencion@integra.com.pe	https://www.integra.com.pe	Activo
+3	AFP Prima	Financiera	20346199679	Av. Javier Prado Este 568, Lima	01-5117000	contacto@prima.com.pe	https://www.prima.com.pe	Activo
+4	AFP Habitat	Financiera	20509505465	Av. V├¡ctor Andr├®s Bela├║nde 147, Lima	01-5005500	servicios@afphabitat.com.pe	https://www.afphabitat.com.pe	Activo
+5	AFP Profuturo	Financiera	20100147898	Jr. Cusco 141, Lima	01-6154100	atencionalafiliado@profuturo.com.pe	https://www.profuturo.com.pe	Activo
+\.
+
+COPY public.notificacion (id_notificacion, id_usuario, tipo_notificacion, mensaje, fecha_envio, fecha_lectura, canal, prioridad, estado) FROM stdin;
+\.
+
+COPY public.pago_seguro (id_pago, id_seguro, numero_cuota, monto_pagado, fecha_pago, metodo_pago, estado) FROM stdin;
+1	1	1	200.00	2025-01-05 08:00:00	D├®bito autom├ítico	Pagado
+2	1	2	200.00	2025-02-05 08:00:00	D├®bito autom├ítico	Pagado
+3	1	3	200.00	2025-03-05 08:00:00	D├®bito autom├ítico	Pagado
+4	1	4	200.00	2025-04-05 08:00:00	D├®bito autom├ítico	Pagado
+5	2	1	300.00	2025-01-10 10:30:00	Tarjeta de cr├®dito	Pagado
+6	2	2	300.00	2025-02-10 10:30:00	Tarjeta de cr├®dito	Pagado
+7	2	3	300.00	2025-03-10 10:30:00	Tarjeta de cr├®dito	Pagado
+8	6	4	300.00	\N	D├®bito autom├ítico	Pendiente
+9	8	1	150.00	2025-01-15 08:00:00	D├®bito autom├ítico	Pagado
+10	8	2	150.00	2025-02-15 08:00:00	D├®bito autom├ítico	Pagado
+11	8	3	150.00	2025-03-15 08:00:00	D├®bito autom├ítico	Pagado
+\.
+
+COPY public.rol_usuario (id_rol, nombre_rol, descripcion, permisos, estado) FROM stdin;
+1	Administrador	Acceso total al sistema, gesti├│n de usuarios y configuraci├│n	{"aportes": "crud", "seguros": "crud", "reportes": "read", "usuarios": "crud", "configuracion": "crud"}	Activo
+2	Usuario	Usuario est├índar con acceso a consultas personales	{"perfil": "read-update", "aportes": "read", "seguros": "read", "consultas": "create"}	Activo
+3	Asesor	Asesor financiero con acceso a m├║ltiples usuarios	{"clientes": "read", "reportes": "read", "asesoramiento": "crud"}	Activo
+\.
+
+COPY public.saldo_pension (id_saldo, id_usuario, id_afp, id_tipo_fondo, saldo_total, saldo_disponible, saldo_cic, saldo_cv, rentabilidad_acumulada, fecha_corte, fecha_actualizacion, estado) FROM stdin;
+36	1	2	2	10508.00	9457.20	6304.80	4203.20	525.40	2025-10-25	2025-10-25 00:00:00	Activo
+37	6	\N	2	6722.00	6049.80	4033.20	2688.80	336.10	2025-10-25	2025-10-25 00:00:00	Activo
+\.
+
+COPY public.seguro (id_seguro, id_usuario, id_tipo_seguro, id_compania, numero_poliza, numero_contrato, fecha_inicio, fecha_vencimiento, monto_asegurado, prima_mensual, prima_anual, deducible, beneficiarios, coberturas, exclusiones, forma_pago, metodo_pago, fecha_registro, estado, dias_gracia, alerta_vencimiento) FROM stdin;
+1	1	1	1	POL-RIMAC-AUTO-001	CONT-001	2025-01-01	2025-12-31	150000.00	200.00	2400.00	500.00	[]	["Responsabilidad civil", "Robo total", "Da├▒os a terceros"]	["Conducci├│n bajo influencia", "Eventos catastr├│ficos no declarados"]	Mensual	D├®bito autom├ítico	2025-01-01 00:00:00	Activo	15	t
+2	1	2	2	POL-PACIF-AUTO-001	CONT-002	2025-01-01	2025-12-31	250000.00	300.00	3600.00	300.00	[]	["Cobertura completa", "Gr├║a 24/7", "Auto de reemplazo", "Asistencia m├®dica ocupantes"]	["Uso comercial no declarado", "Modificaciones no autorizadas"]	Mensual	Tarjeta de cr├®dito	2025-01-01 00:00:00	Activo	15	t
+3	1	3	3	POL-MAPFR-AUTO-001	CONT-003	2025-01-01	2025-12-31	300000.00	350.00	4200.00	400.00	[]	["Todo riesgo", "Asistencia m├®dica", "Defensa legal", "P├®rdida total", "Eventos naturales"]	["Carreras o competencias", "Transporte de mercanc├¡as peligrosas"]	Mensual	D├®bito autom├ítico	2025-01-01 00:00:00	Activo	15	t
+4	1	4	1	POL-RIMAC-HOME-001	CONT-004	2025-01-01	2025-12-31	500000.00	150.00	1800.00	300.00	[]	["Cobertura total estructura", "Responsabilidad civil", "Gastos adicionales", "Robo y asalto"]	["Da├▒os por guerra", "Actos intencionales"]	Mensual	D├®bito autom├ítico	2025-01-01 00:00:00	Activo	15	t
+5	1	5	2	POL-PACIF-HOME-001	CONT-005	2025-01-01	2025-12-31	650000.00	200.00	2400.00	200.00	[]	["Todo incluido", "Valuables hasta S/50,000", "Hospedaje temporal", "Mascotas", "Electrodom├®sticos"]	["Desgaste natural", "Mantenimiento inadecuado"]	Mensual	Tarjeta de cr├®dito	2025-01-01 00:00:00	Activo	15	t
+6	1	6	3	POL-MAPFR-HEAL-001	CONT-006	2025-01-01	2025-12-31	30000.00	300.00	3600.00	200.00	[]	["Consultas m├®dicas", "Medicinas", "Emergencias", "Hospitalizaci├│n b├ísica"]	["Enfermedades preexistentes no declaradas", "Tratamientos est├®ticos"]	Mensual	D├®bito autom├ítico	2025-01-01 00:00:00	Activo	15	t
+7	1	7	2	POL-PACIF-HEAL-001	CONT-007	2025-01-01	2025-12-31	80000.00	500.00	6000.00	150.00	[]	["Cobertura internacional", "Medicina preventiva", "Dental completo", "Oncolog├¡a", "Maternidad"]	["Cirug├¡as est├®ticas electivas", "Tratamientos experimentales"]	Mensual	Tarjeta de cr├®dito	2025-01-01 00:00:00	Activo	15	t
+8	1	8	1	POL-RIMAC-LIFE-001	CONT-008	2025-01-01	2025-12-31	250000.00	150.00	1800.00	\N	[{"nombre": "Mar├¡a Garc├¡a", "parentesco": "C├│nyuge", "porcentaje": 100}]	["Fallecimiento natural", "Fallecimiento accidental", "Gastos funerarios hasta S/10,000"]	["Suicidio en primer a├▒o", "Deportes extremos no declarados"]	Mensual	D├®bito autom├ítico	2025-01-01 00:00:00	Activo	15	t
+9	1	9	3	POL-MAPFR-LIFE-001	CONT-009	2025-01-01	2025-12-31	500000.00	270.00	3240.00	\N	[{"nombre": "Mar├¡a Garc├¡a", "parentesco": "C├│nyuge", "porcentaje": 60}, {"nombre": "Juan Mendoza Jr.", "parentesco": "Hijo", "porcentaje": 40}]	["Cobertura internacional", "Enfermedades graves", "Invalidez total y permanente", "Gastos funerarios hasta S/20,000", "Adelanto por enfermedad terminal"]	["Participaci├│n en actos delictivos", "Enfermedades preexistentes no declaradas"]	Mensual	Tarjeta de cr├®dito	2025-01-01 00:00:00	Activo	15	t
+10	1	1	1	POL-RIMAC-AUTO-002	CONT-010	2025-01-15	2026-01-14	180000.00	220.00	2640.00	600.00	[]	["Responsabilidad civil ampliada", "Robo total y parcial", "Asistencia en carretera 24/7", "Auto de reemplazo 15 d├¡as"]	["Conducci├│n en estado de ebriedad", "Modificaciones no autorizadas al veh├¡culo"]	Mensual	D├®bito autom├ítico	2025-10-25 02:50:00.00769	Activo	15	t
+11	1	11	2	POL-PACIF-HOME-002	CONT-011	2025-02-01	2026-01-31	400000.00	130.00	1560.00	250.00	[]	["Incendio", "Robo", "Responsabilidad civil", "Da├▒os por agua"]	["Desgaste natural", "Falta de mantenimiento"]	Mensual	Tarjeta de cr├®dito	2025-10-25 02:50:00.00769	Activo	15	t
+12	1	12	1	POL-RIMAC-HEAL-001	CONT-012	2025-01-01	2025-12-31	20000.00	150.00	1800.00	150.00	[]	["Consultas m├®dicas", "Medicinas", "Emergencias", "An├ílisis de laboratorio b├ísicos"]	["Enfermedades preexistentes", "Tratamientos est├®ticos"]	Mensual	D├®bito autom├ítico	2025-10-25 02:50:00.00769	Activo	15	t
+13	1	13	2	POL-PACIF-HEAL-002	CONT-013	2025-03-01	2026-02-28	100000.00	450.00	5400.00	200.00	[{"edad": 38, "nombre": "Mar├¡a Garc├¡a", "parentesco": "Esposa"}, {"edad": 12, "nombre": "Juan Mendoza Jr.", "parentesco": "Hijo"}]	["Consultas ilimitadas", "Hospitalizaci├│n", "Maternidad", "Pediatr├¡a", "Dental", "Oftalmolog├¡a"]	["Cirug├¡as est├®ticas", "Tratamientos experimentales"]	Mensual	Tarjeta de cr├®dito	2025-10-25 02:50:00.00769	Activo	15	t
+14	1	15	1	POL-RIMAC-LIFE-002	CONT-014	2025-01-01	2030-12-31	300000.00	180.00	2160.00	\N	[{"nombre": "Mar├¡a Garc├¡a", "parentesco": "C├│nyuge", "porcentaje": 100}]	["Fallecimiento por cualquier causa", "Invalidez total y permanente", "Gastos funerarios S/15,000"]	["Suicidio primer a├▒o", "Deportes extremos sin declarar"]	Mensual	D├®bito autom├ítico	2025-10-25 02:50:00.00769	Activo	15	t
+15	2	12	1	POL-RIMAC-HEAL-002	CONT-020	2025-01-01	2025-12-31	25000.00	160.00	1920.00	200.00	[]	["Consultas m├®dicas", "Medicinas", "Emergencias", "An├ílisis b├ísicos"]	["Enfermedades preexistentes", "Cirug├¡as est├®ticas"]	Mensual	D├®bito autom├ítico	2025-10-25 02:50:00.00769	Activo	15	t
+16	2	8	2	POL-PACIF-LIFE-002	CONT-021	2024-06-01	2029-05-31	200000.00	140.00	1680.00	\N	[{"nombre": "Pedro Garc├¡a", "parentesco": "Padre", "porcentaje": 100}]	["Fallecimiento natural", "Fallecimiento accidental", "Gastos funerarios S/12,000"]	["Suicidio primer a├▒o"]	Mensual	Tarjeta de cr├®dito	2025-10-25 02:50:00.00769	Activo	15	t
+\.
+
+COPY public.tipo_fondo (id_tipo_fondo, nombre_tipo, descripcion, categoria, rentabilidad_esperada, estado) FROM stdin;
+1	ONP	Fondo de la Oficina de Normalizaci├│n Previsional	Pensiones	0.00	Activo
+2	AFP Fondo 0	Fondo de preservaci├│n de capital - Muy Conservador	Inversi├│n	3.50	Activo
+3	AFP Fondo 1	Fondo de protecci├│n de capital - Conservador	Inversi├│n	5.20	Activo
+4	AFP Fondo 2	Fondo balanceado - Moderado	Inversi├│n	7.80	Activo
+5	AFP Fondo 3	Fondo de crecimiento - Agresivo	Inversi├│n	10.50	Activo
+\.
+
+COPY public.tipo_seguro (id_tipo_seguro, nombre, descripcion, categoria, cobertura_principal, estado) FROM stdin;
+1	Seguro Vehicular B├ísico	Cobertura b├ísica para veh├¡culos particulares	Vehicular	Responsabilidad civil y robo total	Activo
+2	Seguro Vehicular Premium	Cobertura completa para veh├¡culos de alta gama	Vehicular	Todo riesgo, asistencia 24/7, auto de reemplazo	Activo
+3	Seguro Vehicular Total	M├íxima protecci├│n vehicular con coberturas extendidas	Vehicular	Todo riesgo plus, defensa legal, asistencia m├®dica	Activo
+4	Seguro Hogar Completo	Protecci├│n integral para tu hogar	Hogar	Estructura, contenido y responsabilidad civil	Activo
+5	Seguro Hogar Premium	Cobertura ampliada con servicios adicionales	Hogar	Todo incluido, valuables, hospedaje temporal	Activo
+6	Seguro Salud B├ísico	Cobertura m├®dica esencial	Salud	Consultas, emergencias y medicinas b├ísicas	Activo
+7	Seguro Salud Premium	Cobertura m├®dica completa internacional	Salud	Cobertura internacional, medicina preventiva, dental	Activo
+8	Seguro Vida Cl├ísico	Protecci├│n familiar b├ísica	Vida	Fallecimiento natural, accidental y gastos funerarios	Activo
+9	Seguro Vida Premium	M├íxima protecci├│n para tu familia	Vida	Cobertura internacional, enfermedades graves, invalidez total	Activo
+10	Seguro Vehicular B├ísico Plus	Cobertura b├ísica mejorada con asistencia en viaje	Vehicular	Responsabilidad civil, robo total y asistencia en carretera	Activo
+11	Seguro Vehicular Comercial	Para veh├¡culos de uso comercial y transporte	Vehicular	Todo riesgo comercial, carga y mercanc├¡as	Activo
+12	Seguro Hogar B├ísico	Protecci├│n esencial para tu hogar	Hogar	Incendio, robo y responsabilidad civil b├ísica	Activo
+13	Seguro Hogar Todo Incluido	M├íxima protecci├│n para tu patrimonio	Hogar	Cobertura total: estructura, contenido, fen├│menos naturales	Activo
+14	Seguro Salud Econ├│mico	Plan b├ísico de salud para consultas y emergencias	Salud	Consultas, medicinas b├ísicas y emergencias	Activo
+15	Seguro Salud Familiar	Cobertura completa para toda la familia	Salud	Consultas, hospitalizaci├│n, maternidad y pediatr├¡a	Activo
+16	Seguro Salud Internacional	Cobertura m├®dica mundial para viajeros	Salud	Atenci├│n m├®dica internacional, evacuaci├│n y repatriaci├│n	Activo
+17	Seguro Vida Temporal	Protecci├│n por un periodo determinado	Vida	Fallecimiento durante el periodo contratado	Activo
+18	Seguro Vida Dotal	Ahorro y protecci├│n combinados	Vida	Fallecimiento o supervivencia al t├®rmino del contrato	Activo
+\.
+
+COPY public.tramite_seguro (id_tramite, id_usuario, id_seguro, tipo_tramite, descripcion, fecha_solicitud, fecha_resolucion, estado, respuesta, documentos_adjuntos, prioridad, canal_atencion) FROM stdin;
+1	1	1	Reclamo	Demora en el reembolso de gastos m├®dicos por consulta especializada del 15/01/2025. Adjunto facturas y recetas.	2025-01-20 10:30:00	\N	En proceso	\N	\N	Alta	Web
+2	1	2	Solicitud	Solicitud de inclusi├│n de beneficiario adicional (hijo menor) en p├│liza vehicular POL-PACIF-AUTO-001	2024-12-15 14:20:00	2024-12-20 09:15:00	Resuelto	Solicitud aprobada. Beneficiario incluido a partir del 01/01/2025. Prima actualizada.	\N	Media	Tel├®fono
+3	1	4	Consulta	Consulta sobre cobertura para remodelaci├│n de cocina por da├▒os en instalaciones el├®ctricas	2025-01-10 16:45:00	2025-01-11 10:00:00	Resuelto	La p├│liza cubre da├▒os el├®ctricos s├║bitos e imprevistos. Cobertura m├íxima S/50,000. Requiere peritaje previo.	\N	Baja	Email
+4	1	3	Renovaci├│n	Solicitud de renovaci├│n anticipada de p├│liza POL-MAPFR-AUTO-001 con mejora de cobertura	2025-01-25 11:00:00	\N	Pendiente	\N	\N	Media	Web
+5	1	6	Reclamo	Solicitud de reembolso por consulta con especialista no afiliado a la red	2025-01-05 09:30:00	2025-01-08 15:20:00	Rechazado	Lamentamos informar que el reembolso no procede ya que la consulta fue realizada fuera de la red de prestadores afiliados. Revisar cl├íusula 5.2 del contrato.	\N	Media	Presencial
+\.
+
+COPY public.usuario (id_usuario, id_rol, nombre, apellido, dni, fecha_nacimiento, genero, estado_civil, correo, telefono, direccion, distrito, provincia, departamento, contrasena, clave_sol, centro_trabajo, salario_actual, fecha_ingreso_trabajo, tipo_contrato, cuspp, id_afp, tipo_regimen, fecha_afiliacion, notificaciones_email, notificaciones_sms, estado, ultimo_acceso, foto_perfil) FROM stdin;
+1	1	Carlos	Mendoza	12345678	1985-03-14	M	Soltero	carlos.mendoza@admin.com	987654321	Av. Principal 123	Cercado	Arequipa	Arequipa	1234	1234	Empresa Administradora SAC	6000.00	2015-01-09	Dependiente	CUSPP001234567890	\N	SPP	2015-01-31	t	t	Activo	2025-10-14 22:48:55.304915	data:image/png;
+6	2	Orlando	Quispe	60967428	2025-09-29	M	Soltero	orlando@oficial.com	36521485	Alto de la alizan 102	Paucarpata	Arequipa	Arequipa	\N	1234	Utp	\N	2025-09-28	Dependiente	CUSPP001234567890	1	SPP	2025-10-01	t	t	Activo	\N	\N
+3	2	Luis	Ram├¡rez	45678912	1988-11-30	M	Casado	luis.ramirez@email.com	923456789	Jr. Independencia 789	Cayma	Arequipa	Arequipa	1234	1234	Servicios Tecnol├│gicos SAC	4500.00	2018-03-20	Dependiente	CUSPP005551112222	\N	SPP	2018-04-01	t	t	Activo	2025-10-14 22:48:55.304915	\N
+8	2	Jhon	Belaunde	123456789	2025-10-01	M	Casado	jhon123@gmail.com	44444444	Siempre viva 101	Cercado	Arequipa	Arequipa	\N	1234	Bcp	\N	2025-10-08	Independiente		\N	ONP	2025-10-17	t	t	Activo	\N	\N
+5	2	Juan	Perez	67483934	1990-01-01	M	Soltero	juan@mail.com	987654321	Av. Siempre Viva 123	Miraflores	Lima	Lima	\N	1234	Sumaq Seguros	\N	2020-01-01	Dependiente	\N	\N	ONP	2020-02-01	t	f	Activo	\N	\N
+9	2	Prueba	Smith	76869534	2001-01-16	M	Casado	prueba1@hotmail.com	987656422	Tacna 1234				\N	1234		\N	\N			\N		\N	f	f	Activo	\N	\N
+7	2	Pipito	Luque	789456123	2025-10-08	M	Soltero	pipito123@gmail.com	52698745	Calle argentina 123	Miraflores	Arequipa	Arequipa	\N	1234	bbva	\N	2025-10-13	Independiente	\N	\N	SPP	2025-09-30	t	f	Activo	\N	\N
+2	2	Mar├¡a	Garc├¡a	87654321	1990-07-22	F	Soltera	maria.garcia@email.com	965432187	Calle Los Rosales 456	Yanahuara	Arequipa	Arequipa	1234	1234	Comercial del Sur EIRL	3200.00	2020-06-15	Dependiente	CUSPP009876543210	\N	SPP	2020-07-01	t	f	Activo	2025-10-14 22:48:55.304915	\N
+\.
+
+SELECT pg_catalog.setval('public.administrador_id_admin_seq', 1, false);
+
+SELECT pg_catalog.setval('public.afp_id_afp_seq', 4, true);
+
+SELECT pg_catalog.setval('public.aporte_pension_id_aporte_seq', 19, true);
+
+SELECT pg_catalog.setval('public.asesor_id_asesor_seq', 1, false);
+
+SELECT pg_catalog.setval('public.asesoramiento_financiero_id_asesoramiento_seq', 1, false);
+
+SELECT pg_catalog.setval('public.autenticacion_id_autenticacion_seq', 1, false);
+
+SELECT pg_catalog.setval('public.beneficiario_seguro_id_beneficiario_seq', 4, true);
+
+SELECT pg_catalog.setval('public.chat_mensaje_id_mensaje_seq', 1, false);
+
+SELECT pg_catalog.setval('public.compania_seguro_id_compania_seq', 3, true);
+
+SELECT pg_catalog.setval('public.consulta_aportes_id_consulta_seq', 1, false);
+
+SELECT pg_catalog.setval('public.historial_consultas_id_historial_seq', 1, false);
+
+SELECT pg_catalog.setval('public.historial_rentabilidad_id_rentabilidad_seq', 1, false);
+
+SELECT pg_catalog.setval('public.institucion_id_institucion_seq', 5, true);
+
+SELECT pg_catalog.setval('public.notificacion_id_notificacion_seq', 1, false);
+
+SELECT pg_catalog.setval('public.pago_seguro_id_pago_seq', 11, true);
+
+SELECT pg_catalog.setval('public.rol_usuario_id_rol_seq', 1, false);
+
+SELECT pg_catalog.setval('public.saldo_pension_id_saldo_seq', 37, true);
+
+SELECT pg_catalog.setval('public.seguro_id_seguro_seq', 16, true);
+
+SELECT pg_catalog.setval('public.tipo_fondo_id_tipo_fondo_seq', 5, true);
+
+SELECT pg_catalog.setval('public.tipo_seguro_id_tipo_seguro_seq', 18, true);
+
+SELECT pg_catalog.setval('public.tramite_seguro_id_tramite_seq', 5, true);
+
+SELECT pg_catalog.setval('public.usuario_id_usuario_seq', 9, true);
+
+ALTER TABLE ONLY public.administrador
+    ADD CONSTRAINT administrador_pkey PRIMARY KEY (id_admin);
+
+ALTER TABLE ONLY public.afp
+    ADD CONSTRAINT afp_pkey PRIMARY KEY (id_afp);
+
+ALTER TABLE ONLY public.aporte_pension
+    ADD CONSTRAINT aporte_pension_pkey PRIMARY KEY (id_aporte);
+
+ALTER TABLE ONLY public.asesor
+    ADD CONSTRAINT asesor_codigo_asesor_key UNIQUE (codigo_asesor);
+
+ALTER TABLE ONLY public.asesor
+    ADD CONSTRAINT asesor_pkey PRIMARY KEY (id_asesor);
+
+ALTER TABLE ONLY public.asesoramiento_financiero
+    ADD CONSTRAINT asesoramiento_financiero_pkey PRIMARY KEY (id_asesoramiento);
+
+ALTER TABLE ONLY public.autenticacion
+    ADD CONSTRAINT autenticacion_pkey PRIMARY KEY (id_autenticacion);
+
+ALTER TABLE ONLY public.beneficiario_seguro
+    ADD CONSTRAINT beneficiario_seguro_pkey PRIMARY KEY (id_beneficiario);
+
+ALTER TABLE ONLY public.chat_mensaje
+    ADD CONSTRAINT chat_mensaje_pkey PRIMARY KEY (id_mensaje);
+
+ALTER TABLE ONLY public.compania_seguro
+    ADD CONSTRAINT compania_seguro_pkey PRIMARY KEY (id_compania);
+
+ALTER TABLE ONLY public.consulta_aportes
+    ADD CONSTRAINT consulta_aportes_pkey PRIMARY KEY (id_consulta);
+
+ALTER TABLE ONLY public.historial_consultas
+    ADD CONSTRAINT historial_consultas_pkey PRIMARY KEY (id_historial);
+
+ALTER TABLE ONLY public.historial_rentabilidad
+    ADD CONSTRAINT historial_rentabilidad_pkey PRIMARY KEY (id_rentabilidad);
+
+ALTER TABLE ONLY public.institucion
+    ADD CONSTRAINT institucion_pkey PRIMARY KEY (id_institucion);
+
+ALTER TABLE ONLY public.institucion
+    ADD CONSTRAINT institucion_ruc_key UNIQUE (ruc);
+
+ALTER TABLE ONLY public.notificacion
+    ADD CONSTRAINT notificacion_pkey PRIMARY KEY (id_notificacion);
+
+ALTER TABLE ONLY public.pago_seguro
+    ADD CONSTRAINT pago_seguro_pkey PRIMARY KEY (id_pago);
+
+ALTER TABLE ONLY public.rol_usuario
+    ADD CONSTRAINT rol_usuario_pkey PRIMARY KEY (id_rol);
+
+ALTER TABLE ONLY public.saldo_pension
+    ADD CONSTRAINT saldo_pension_pkey PRIMARY KEY (id_saldo);
+
+ALTER TABLE ONLY public.seguro
+    ADD CONSTRAINT seguro_numero_poliza_key UNIQUE (numero_poliza);
+
+ALTER TABLE ONLY public.seguro
+    ADD CONSTRAINT seguro_pkey PRIMARY KEY (id_seguro);
+
+ALTER TABLE ONLY public.tipo_fondo
+    ADD CONSTRAINT tipo_fondo_pkey PRIMARY KEY (id_tipo_fondo);
+
+ALTER TABLE ONLY public.tipo_seguro
+    ADD CONSTRAINT tipo_seguro_pkey PRIMARY KEY (id_tipo_seguro);
+
+ALTER TABLE ONLY public.tramite_seguro
+    ADD CONSTRAINT tramite_seguro_pkey PRIMARY KEY (id_tramite);
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_correo_key UNIQUE (correo);
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_dni_key UNIQUE (dni);
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario);
+
+ALTER TABLE ONLY public.administrador
+    ADD CONSTRAINT administrador_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.afp
+    ADD CONSTRAINT afp_id_institucion_fkey FOREIGN KEY (id_institucion) REFERENCES public.institucion(id_institucion);
+
+ALTER TABLE ONLY public.aporte_pension
+    ADD CONSTRAINT aporte_pension_id_institucion_fkey FOREIGN KEY (id_institucion) REFERENCES public.institucion(id_institucion);
+
+ALTER TABLE ONLY public.aporte_pension
+    ADD CONSTRAINT aporte_pension_id_tipo_fondo_fkey FOREIGN KEY (id_tipo_fondo) REFERENCES public.tipo_fondo(id_tipo_fondo);
+
+ALTER TABLE ONLY public.aporte_pension
+    ADD CONSTRAINT aporte_pension_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.asesor
+    ADD CONSTRAINT asesor_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.asesoramiento_financiero
+    ADD CONSTRAINT asesoramiento_financiero_id_aporte_fkey FOREIGN KEY (id_aporte) REFERENCES public.aporte_pension(id_aporte);
+
+ALTER TABLE ONLY public.asesoramiento_financiero
+    ADD CONSTRAINT asesoramiento_financiero_id_asesor_fkey FOREIGN KEY (id_asesor) REFERENCES public.asesor(id_asesor);
+
+ALTER TABLE ONLY public.asesoramiento_financiero
+    ADD CONSTRAINT asesoramiento_financiero_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.autenticacion
+    ADD CONSTRAINT autenticacion_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.beneficiario_seguro
+    ADD CONSTRAINT beneficiario_seguro_id_seguro_fkey FOREIGN KEY (id_seguro) REFERENCES public.seguro(id_seguro);
+
+ALTER TABLE ONLY public.compania_seguro
+    ADD CONSTRAINT compania_seguro_id_institucion_fkey FOREIGN KEY (id_institucion) REFERENCES public.institucion(id_institucion);
+
+ALTER TABLE ONLY public.consulta_aportes
+    ADD CONSTRAINT consulta_aportes_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT fk_usuario_afp FOREIGN KEY (id_afp) REFERENCES public.afp(id_afp);
+
+ALTER TABLE ONLY public.chat_mensaje
+    ADD CONSTRAINT fk_usuario_chat FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario) ON DELETE CASCADE;
+
+ALTER TABLE ONLY public.historial_consultas
+    ADD CONSTRAINT historial_consultas_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.historial_rentabilidad
+    ADD CONSTRAINT historial_rentabilidad_id_afp_fkey FOREIGN KEY (id_afp) REFERENCES public.afp(id_afp);
+
+ALTER TABLE ONLY public.historial_rentabilidad
+    ADD CONSTRAINT historial_rentabilidad_id_tipo_fondo_fkey FOREIGN KEY (id_tipo_fondo) REFERENCES public.tipo_fondo(id_tipo_fondo);
+
+ALTER TABLE ONLY public.notificacion
+    ADD CONSTRAINT notificacion_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.pago_seguro
+    ADD CONSTRAINT pago_seguro_id_seguro_fkey FOREIGN KEY (id_seguro) REFERENCES public.seguro(id_seguro);
+
+ALTER TABLE ONLY public.saldo_pension
+    ADD CONSTRAINT saldo_pension_id_afp_fkey FOREIGN KEY (id_afp) REFERENCES public.afp(id_afp);
+
+ALTER TABLE ONLY public.saldo_pension
+    ADD CONSTRAINT saldo_pension_id_tipo_fondo_fkey FOREIGN KEY (id_tipo_fondo) REFERENCES public.tipo_fondo(id_tipo_fondo);
+
+ALTER TABLE ONLY public.saldo_pension
+    ADD CONSTRAINT saldo_pension_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.seguro
+    ADD CONSTRAINT seguro_id_compania_fkey FOREIGN KEY (id_compania) REFERENCES public.compania_seguro(id_compania);
+
+ALTER TABLE ONLY public.seguro
+    ADD CONSTRAINT seguro_id_tipo_seguro_fkey FOREIGN KEY (id_tipo_seguro) REFERENCES public.tipo_seguro(id_tipo_seguro);
+
+
+ALTER TABLE ONLY public.seguro
+    ADD CONSTRAINT seguro_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.tramite_seguro
+    ADD CONSTRAINT tramite_seguro_id_seguro_fkey FOREIGN KEY (id_seguro) REFERENCES public.seguro(id_seguro);
+
+
+ALTER TABLE ONLY public.tramite_seguro
+    ADD CONSTRAINT tramite_seguro_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_id_rol_fkey FOREIGN KEY (id_rol) REFERENCES public.rol_usuario(id_rol);
+
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;

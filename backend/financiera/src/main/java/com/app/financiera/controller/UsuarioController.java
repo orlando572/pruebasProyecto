@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.financiera.dto.LoginRequest;
+import com.app.financiera.dto.LoginResponse;
 import com.app.financiera.entity.Afp;
 import com.app.financiera.entity.RolUsuario;
 import com.app.financiera.entity.Usuario;
+import com.app.financiera.security.JwtUtil;
 import com.app.financiera.service.AfpService;
 import com.app.financiera.service.RolUsuarioService;
 import com.app.financiera.service.UsuarioService;
@@ -47,6 +50,9 @@ public class UsuarioController {
 
     @Autowired
     private AfpService afpService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @GetMapping("/roles")
     @ResponseBody
@@ -87,11 +93,11 @@ public class UsuarioController {
 
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<?> login(@RequestBody Map<String, String> credentials) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         HashMap<String, Object> salida = new HashMap<>();
         try {
-            String dni = credentials.get("dni");
-            String claveSol = credentials.get("claveSol");
+            String dni = loginRequest.getDni();
+            String claveSol = loginRequest.getClaveSol();
 
             logger.info("Intento de login con DNI: {}", dni);
 
@@ -109,11 +115,22 @@ public class UsuarioController {
                 return ResponseEntity.status(401).body(salida);
             }
 
-            logger.info("Login exitoso para usuario: {} {}", usuario.getNombre(), usuario.getApellido());
-            return ResponseEntity.ok(usuario);
+            // Generar token JWT
+            String token = jwtUtil.generateToken(
+                usuario.getDni(), 
+                usuario.getIdUsuario(), 
+                usuario.getRol().getIdRol()
+            );
+
+            logger.info("Login exitoso para usuario: {} {} - Token generado", 
+                usuario.getNombre(), usuario.getApellido());
+
+            // Crear respuesta con token y datos del usuario
+            LoginResponse response = new LoginResponse(token, usuario, "Login exitoso");
+            return ResponseEntity.ok(response);
 
         } catch (Exception e) {
-            logger.error("Error en login (DNI: {}): {}", credentials.get("dni"), e.getMessage(), e);
+            logger.error("Error en login (DNI: {}): {}", loginRequest.getDni(), e.getMessage(), e);
             salida.put("mensaje", "Error en el servidor");
             return ResponseEntity.status(500).body(salida);
         }

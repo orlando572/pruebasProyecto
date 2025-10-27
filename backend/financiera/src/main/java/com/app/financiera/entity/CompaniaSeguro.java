@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Getter
 @Setter
@@ -26,6 +28,7 @@ public class CompaniaSeguro {
     @Column(name = "codigo_sbs")
     private String codigoSbs;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "tipos_seguro_ofrecidos", columnDefinition = "jsonb")
     private String tiposSeguroOfrecidos;
 
